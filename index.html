@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programa de Investigación - Human Systems Under Uncertainty</title>
+  <style>
+    :root {
+      --bg: #f7f3ea;
+      --paper: #fffaf0;
+      --ink: #202020;
+      --muted: #666;
+      --accent: #7a3e2d;
+      --accent2: #224b5f;
+      --line: #ddd0bf;
+      --code: #efe7d8;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+    .layout { display: flex; min-height: 100vh; }
+    nav {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: 310px;
+      overflow-y: auto;
+      padding: 26px 22px;
+      background: #2f2a26;
+      color: #f5ead8;
+      border-right: 1px solid #1f1b18;
+    }
+    nav h1 {
+      font-size: 19px;
+      line-height: 1.2;
+      margin: 0 0 8px;
+      color: #fff6e7;
+      font-weight: normal;
+    }
+    nav .subtitle { font-size: 12px; color: #ccbda7; margin-bottom: 22px; }
+    nav a {
+      color: #f5ead8;
+      text-decoration: none;
+      display: block;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      font-size: 14px;
+    }
+    nav a:hover { color: #ffd8a8; }
+    main {
+      margin-left: 310px;
+      width: calc(100% - 310px);
+      padding: 48px 7vw 80px;
+    }
+    .book {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 58px 68px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.12);
+      border: 1px solid var(--line);
+    }
+    h1, h2, h3, h4 { line-height: 1.2; }
+    .cover h1 {
+      font-size: 44px;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+    .cover h2 {
+      font-size: 24px;
+      font-weight: normal;
+      color: var(--accent2);
+      margin: 0 0 24px;
+    }
+    .meta { color: var(--muted); font-size: 15px; border-top: 1px solid var(--line); padding-top: 16px; }
+    section { margin-top: 70px; padding-top: 10px; }
+    section h2 {
+      font-size: 30px;
+      color: var(--accent);
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+    }
+    h3 { font-size: 22px; color: var(--accent2); margin-top: 34px; }
+    h4 { font-size: 18px; color: var(--accent); margin-top: 26px; }
+    blockquote {
+      margin: 26px 0;
+      padding: 18px 24px;
+      border-left: 5px solid var(--accent);
+      background: #f3eadb;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .principle {
+      background: #eef3f3;
+      border: 1px solid #cad8d8;
+      padding: 20px 24px;
+      margin: 26px 0;
+    }
+    .note {
+      background: #f9f0df;
+      border: 1px dashed #c6aa80;
+      padding: 16px 20px;
+      margin: 20px 0;
+      color: #3d342c;
+    }
+    ul { padding-left: 24px; }
+    li { margin: 7px 0; }
+    code, pre {
+      background: var(--code);
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+    pre { padding: 18px; overflow-x: auto; line-height: 1.35; }
+    table {
+      width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 15px;
+    }
+    th, td { border: 1px solid var(--line); padding: 10px 12px; vertical-align: top; }
+    th { background: #efe3d0; color: var(--accent); }
+    .small { font-size: 14px; color: var(--muted); }
+    .toc-inline { columns: 2; column-gap: 38px; }
+    .toc-inline a { color: var(--accent2); text-decoration: none; }
+    .appendix { font-size: 15px; color: #393939; }
+    @media (max-width: 900px) {
+      nav { position: static; width: 100%; height: auto; }
+      .layout { display: block; }
+      main { margin-left: 0; width: 100%; padding: 20px; }
+      .book { padding: 30px 24px; }
+      .cover h1 { font-size: 34px; }
+      .toc-inline { columns: 1; }
+    }
+    @media print {
+      nav { display: none; }
+      main { margin: 0; width: 100%; padding: 0; }
+      .book { box-shadow: none; border: none; padding: 0; }
+      section { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <nav>
+    <h1>Human Systems<br/>Under Uncertainty</h1>
+    <div class="subtitle">Libro vivo / Programa de investigación v0.1</div>
+    <a href="#portada">Portada</a>
+    <a href="#proposito">1. Propósito</a>
+    <a href="#origen">2. Origen de la intuición</a>
+    <a href="#nucleo">3. Núcleo del programa</a>
+    <a href="#niveles">4. Tres niveles de análisis</a>
+    <a href="#fenomeno">5. Regla del fenómeno</a>
+    <a href="#conceptos">6. Conceptos fundacionales</a>
+    <a href="#preguntas">7. Preguntas de investigación</a>
+    <a href="#framework">8. Framework inicial</a>
+    <a href="#ia">9. Rol de la IA</a>
+    <a href="#negocio">10. Negocio y productos</a>
+    <a href="#mercado">11. Mercado y casos de uso</a>
+    <a href="#biblioteca">12. Biblioteca comentada</a>
+    <a href="#datos">13. Datos y observables</a>
+    <a href="#metodo">14. Método de trabajo</a>
+    <a href="#acciones">15. Próximos pasos</a>
+    <a href="#anexos">Anexos</a>
+  </nav>
+
+  <main>
+    <article class="book">
+      <header id="portada" class="cover">
+        <h1>Human Systems Under Uncertainty</h1>
+        <h2>Programa de Investigación sobre vulnerabilidad, regulación colectiva y adaptación en sistemas humanos</h2>
+        <p class="meta"><strong>Versión:</strong> 0.1 · <strong>Estado:</strong> documento vivo · <strong>Uso:</strong> base conceptual para investigación, MVPs, servicios y productos.</p>
+        <blockquote>“Las teorías que conozco explican mucho. Pero hay un fenómeno que, cuando miro organizaciones reales, sigue escapándose entre ellas.”</blockquote>
+      </header>
+
+      <section id="proposito">
+        <h2>1. Propósito del documento</h2>
+        <p>Este documento ordena los cimientos conceptuales de una línea de trabajo que comenzó como una idea de screening para Venture Capital y derivó en algo más amplio: un programa de investigación aplicado sobre cómo los sistemas humanos se reorganizan bajo incertidumbre.</p>
+        <p>No es un pitch, no es un plan de negocio y no es todavía una tesis académica. Es un <strong>libro vivo</strong>: un espacio para cristalizar ideas, registrar hipótesis, organizar bibliografía, diseñar productos y conectar investigación con acción.</p>
+        <div class="principle">
+          <strong>Principio operativo:</strong> la teoría debe guiar la acción, pero no reemplazarla. El trabajo avanzará en paralelo: investigación profunda, diseño de modelos, MVPs, servicios, clientes, verticales y experimentos de validación.
+        </div>
+      </section>
+
+      <section id="origen">
+        <h2>2. Origen de la intuición</h2>
+        <p>El punto de partida práctico fue una hipótesis doble: por un lado, una herramienta de screening para evaluar startups desde la mirada de fondos de Venture Capital; por otro, un conjunto de herramientas de intervención y acompañamiento desde una mirada integradora de psicología, negocios, PyME, programación, liderazgo y dinámicas grupales.</p>
+        <p>La conversación con el docente de Venture Capital mostró un baño de realidad: los fondos reconocen que descuidan el factor humano, pero suelen resistir intervenciones que puedan ser vividas por founders como invasivas, persecutorias o amenazantes. Esto desplazó el foco desde “evaluación psicológica” hacia algo más aceptable y potente: <strong>mitigación del riesgo humano de ejecución</strong>, especialmente en contextos post-inversión, venture builders, fusiones, salidas de founders y equipos bajo presión.</p>
+        <h3>Dos historias fundantes</h3>
+        <h4>La Cuesta del Obispo</h4>
+        <p>En un viaje de cicloturismo por Salta y Jujuy, un grupo inicialmente liderado por Luis, director de escuela y figura de autoridad, atraviesa una situación crítica. En la Cuesta del Obispo, Luis queda física y emocionalmente afectado, se retira parcialmente de su posición de liderazgo y el sistema grupal se reorganiza sin deliberación formal. Emiliano, el más joven del grupo, comienza a ocupar un rol de guía por conocimiento del territorio, capacidad física y disponibilidad funcional.</p>
+        <p>No hubo votación, reunión ni declaración explícita. El sistema detectó una modificación en su fuente de estabilidad y redistribuyó funciones para recuperar previsibilidad operativa.</p>
+        <h4>El ejercicio grupal en Psicología</h4>
+        <p>En una dinámica tipo Phillips 66, el grupo debía resolver una situación con objetivos parcialmente compatibles y parcialmente contrapuestos. Sin presión coercitiva, sin necesidad de ganar y sin imposición explícita, la resolución colectiva terminó alineándose con lo que Emiliano proponía. Este patrón se repite en otros contextos: grupos escolares, equipos, espacios terapéuticos, PyMEs, salidas deportivas, animales, caballos, perros.</p>
+        <p>La constante no parece ser liderazgo en sentido tradicional, sino una capacidad de percibir deseos, temores, bloqueos, necesidades y estados emocionales del sistema, y proponer intervenciones que ayudan a recuperar equilibrio funcional.</p>
+      </section>
+
+      <section id="nucleo">
+        <h2>3. Núcleo del programa</h2>
+        <blockquote>Existen sistemas humanos que operan bajo condiciones de incertidumbre. Cuando perciben amenazas relevantes para su continuidad, desarrollan mecanismos de regulación colectiva que modifican conductas, roles, decisiones y estructuras organizacionales.</blockquote>
+        <p>El objeto inicial ya no es “la startup”, “el VC”, “el liderazgo” ni “la IA”. Todos ellos son escenarios o instrumentos. El fenómeno central es la <strong>regulación colectiva bajo incertidumbre</strong>.</p>
+        <p>La hipótesis central puede formularse así:</p>
+        <div class="principle">
+          Los sistemas humanos están constitutivamente expuestos a vulnerabilidades. Bajo condiciones de incertidumbre, esas vulnerabilidades se expresan mediante configuraciones adaptativas que buscan preservar la continuidad del sistema, aunque no siempre lo logran de manera funcional.
+        </div>
+        <p>Esto permite salir de la palabra “miedo” como categoría clínica dominante y pasar a un lenguaje más amplio: vulnerabilidad, amenaza percibida, regulación, homeostasis, adaptación, continuidad, previsibilidad.</p>
+      </section>
+
+      <section id="niveles">
+        <h2>4. Tres niveles de análisis</h2>
+        <table>
+          <thead><tr><th>Nivel</th><th>Pregunta</th><th>Ejemplos</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Empírico / observable</strong></td><td>¿Qué se ve?</td><td>Reorganización de roles, cambios de comunicación, silencios, bloqueos, cooperación, concentración de poder, aparición de chivos expiatorios, velocidad de decisión, conflictos.</td></tr>
+            <tr><td><strong>Explicativo / modelizable</strong></td><td>¿Qué mecanismo podría estar operando?</td><td>Arquitecturas de vulnerabilidad, estrategias adaptativas, restauración de previsibilidad, homeostasis, redistribución de funciones.</td></tr>
+            <tr><td><strong>Antropológico / profundo</strong></td><td>¿Qué fundamentos humanos últimos podrían estar detrás?</td><td>Finitud, continuidad, apego, identidad, pertenencia, muerte, sentido, supervivencia simbólica.</td></tr>
+          </tbody>
+        </table>
+        <p>El tercer nivel no debe transformarse prematuramente en axioma. Puede orientar preguntas filosóficas de largo plazo, pero los productos y modelos iniciales deben apoyarse sobre los niveles empírico y explicativo.</p>
+      </section>
+
+      <section id="fenomeno">
+        <h2>5. Regla del fenómeno</h2>
+        <div class="principle">
+          Nunca construiremos una teoría a partir de una disciplina. Construiremos una teoría a partir de un fenómeno observado repetidamente en múltiples contextos y luego utilizaremos todas las disciplinas necesarias para explicarlo.
+        </div>
+        <p>Esto evita partir desde psicoanálisis, management, IA, teoría de sistemas o economía conductual como marcos cerrados. El fenómeno manda; las disciplinas colaboran.</p>
+        <p>También se establece una regla de rigor:</p>
+        <ul>
+          <li>¿Esto es una observación?</li>
+          <li>¿Esto es una interpretación?</li>
+          <li>¿Esto es una hipótesis?</li>
+          <li>¿Esto es una conclusión?</li>
+          <li>¿Esto es demostrable?</li>
+          <li>¿Qué evidencia podría refutarlo?</li>
+        </ul>
+      </section>
+
+      <section id="conceptos">
+        <h2>6. Conceptos fundacionales</h2>
+        <h3>Vulnerabilidad</h3>
+        <p>Condición estructural de exposición del sistema. Puede existir sin miedo consciente, sin ansiedad explícita y sin angustia verbalizada. La vulnerabilidad se expresa cuando una situación amenaza la continuidad percibida del sistema.</p>
+        <h3>Incertidumbre</h3>
+        <p>No es solamente falta de información. Es una condición que amenaza la previsibilidad del sistema y obliga a reorganizar sus mecanismos de regulación.</p>
+        <h3>Regulación colectiva</h3>
+        <p>Conjunto de procesos mediante los cuales un sistema humano intenta recuperar estabilidad, previsibilidad o continuidad frente a una amenaza percibida.</p>
+        <h3>Homeostasis</h3>
+        <p>Tendencia del sistema a conservar o recuperar un equilibrio funcional. En organizaciones, no implica quietud sino equilibrio dinámico.</p>
+        <h3>Arquitecturas de vulnerabilidad</h3>
+        <p>Configuraciones latentes que predisponen determinadas respuestas adaptativas. Antes las llamábamos “arquitecturas del miedo”; ahora el término se amplía para evitar reduccionismos clínicos.</p>
+        <h3>Estrategias adaptativas</h3>
+        <p>Formas en que la vulnerabilidad se convierte en conducta. Pueden ser funcionales o disfuncionales: control, retirada, ataque, silencio, sobreesfuerzo, evitación, hiperresponsabilidad, rigidez, delegación, cooperación.</p>
+        <h3>Continuidad del sistema</h3>
+        <p>No se refiere sólo a supervivencia física. En organizaciones puede significar continuidad del proyecto, identidad, cap table, narrativa, poder, equipo, producto, roadmap, confianza o sentido.</p>
+      </section>
+
+      <section id="preguntas">
+        <h2>7. Preguntas de investigación</h2>
+        <p>La primera pregunta formulada fue:</p>
+        <blockquote>¿Cómo se manifiestan los distintos miedos humanos dentro de sistemas colectivos sometidos a incertidumbre y cómo esas manifestaciones afectan la capacidad adaptativa del sistema?</blockquote>
+        <p>Luego fue refinada hacia una formulación más amplia:</p>
+        <blockquote>¿Cómo se expresan las vulnerabilidades individuales y colectivas dentro de sistemas humanos sometidos a incertidumbre, y cómo esas expresiones modifican la regulación, la adaptación y la continuidad del sistema?</blockquote>
+        <h3>Preguntas derivadas</h3>
+        <ul>
+          <li>¿Qué configuraciones de vulnerabilidad aparecen con mayor frecuencia en organizaciones innovadoras?</li>
+          <li>¿Cómo se manifiestan de manera observable?</li>
+          <li>¿Cuáles son latentes y cuáles visibles?</li>
+          <li>¿Cómo se reorganizan los roles frente a una amenaza?</li>
+          <li>¿Qué condiciones favorecen la homeostasis funcional?</li>
+          <li>¿Cuándo fracasa la reorganización?</li>
+          <li>¿Qué hace que un colectivo quede atrapado en una estrategia disfuncional?</li>
+          <li>¿Cuáles son los patrones repetitivos?</li>
+          <li>¿Cuáles son los puntos de intervención?</li>
+          <li>¿Qué señales tempranas permiten anticipar ruptura, bloqueo o deterioro?</li>
+        </ul>
+      </section>
+
+      <section id="framework">
+        <h2>8. Framework inicial</h2>
+        <h3>Nombre tentativo</h3>
+        <p><strong>Adaptive Collective Regulation Framework</strong> (ACRF)</p>
+        <h3>Modelo base</h3>
+        <pre>Vulnerabilidad latente
+        ↓
+Amenaza / incertidumbre percibida
+        ↓
+Activación de estrategia adaptativa
+        ↓
+Conductas observables
+        ↓
+Dinámica grupal / organizacional
+        ↓
+Resultado sistémico
+        ↓
+Nueva estabilidad, deterioro o ruptura</pre>
+        <h3>Conductas observables iniciales</h3>
+        <ul>
+          <li>Ataque o descalificación.</li>
+          <li>Silencio o retraimiento.</li>
+          <li>Hipertrofia del control.</li>
+          <li>Delegación excesiva.</li>
+          <li>Fusión con una figura de autoridad.</li>
+          <li>Aparición de líder negativo.</li>
+          <li>Aparición de vocero.</li>
+          <li>Chivo expiatorio.</li>
+          <li>Sobreexigencia.</li>
+          <li>Negación del conflicto.</li>
+          <li>Rigidez estratégica.</li>
+          <li>Cambio de roles silencioso.</li>
+        </ul>
+        <h3>Posibles dimensiones del framework</h3>
+        <ul>
+          <li>Confianza.</li>
+          <li>Previsibilidad.</li>
+          <li>Apego / base segura.</li>
+          <li>Gobernanza.</li>
+          <li>Comunicación.</li>
+          <li>Distribución de poder.</li>
+          <li>Complementariedad.</li>
+          <li>Accountability.</li>
+          <li>Tolerancia a la incertidumbre.</li>
+          <li>Capacidad de confrontación.</li>
+          <li>Capacidad de reparación.</li>
+          <li>Identidad colectiva.</li>
+        </ul>
+      </section>
+
+      <section id="ia">
+        <h2>9. Rol de la Inteligencia Artificial</h2>
+        <blockquote>La Inteligencia Artificial no constituye el objeto de nuestra investigación; constituye el instrumento que, por primera vez en la historia, hace posible observar sistemáticamente fenómenos colectivos cuya complejidad excedía la capacidad analítica humana.</blockquote>
+        <p>La IA no reemplaza la mirada humana, no “diagnostica personas” y no decide inversiones. Su rol inicial es ampliar la capacidad de observación, procesamiento, comparación y generación de hipótesis.</p>
+        <h3>Funciones posibles</h3>
+        <ul>
+          <li>Procesar pitch decks, formularios, notas, perfiles públicos y documentos de proyecto.</li>
+          <li>Detectar inconsistencias entre narrativa, equipo, roadmap y capacidades.</li>
+          <li>Identificar señales de riesgo de ejecución.</li>
+          <li>Comparar proyectos con tesis de fondos o patrones de éxito/fricción.</li>
+          <li>Generar reportes de 1 página para analistas.</li>
+          <li>Construir memoria de casos.</li>
+          <li>Alimentar agentes especializados desde una biblioteca comentada.</li>
+        </ul>
+      </section>
+
+      <section id="negocio">
+        <h2>10. Negocio y productos</h2>
+        <p>La empresa no debe nacer como un único producto. Debe nacer como un núcleo conceptual y metodológico capaz de generar varias unidades de negocio.</p>
+        <table>
+          <thead><tr><th>Unidad</th><th>Cliente</th><th>Dolor</th><th>Producto / servicio</th></tr></thead>
+          <tbody>
+            <tr><td>VC Intelligence</td><td>Fondos</td><td>Demasiados proyectos, poca capacidad de filtrar riesgo humano.</td><td>Screening automatizado + informe de riesgo de ejecución.</td></tr>
+            <tr><td>Founder Alignment</td><td>Startups post-inversión</td><td>Desalineación temprana entre founders.</td><td>Proceso de alineación inicial 30/60/90 días.</td></tr>
+            <tr><td>Founder Match</td><td>Venture builders, GRIDX, CITES</td><td>Unir científicos, técnicos y perfiles de negocio bajo presión.</td><td>Score de compatibilidad y sesiones de diseño de roles.</td></tr>
+            <tr><td>Organizational Pulse</td><td>Fondos / portfolio</td><td>Detectar deterioro antes de que sea crisis.</td><td>Dashboard de salud del equipo y alertas tempranas.</td></tr>
+            <tr><td>Crisis Navigator</td><td>Startups, fondos, estudios jurídicos</td><td>Salida de founders, fusiones, conflictos societarios.</td><td>Kit de transición, mediación estratégica y rediseño de roles.</td></tr>
+            <tr><td>Research Reports</td><td>Ecosistema</td><td>Falta de benchmarks sobre riesgo humano.</td><td>Informes, white papers, conferencias, newsletters.</td></tr>
+            <tr><td>People Intelligence API</td><td>Plataformas</td><td>Integrar scoring humano-operativo.</td><td>API o motor de análisis embebible.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="mercado">
+        <h2>11. Mercado y casos de uso</h2>
+        <h3>Verticales iniciales</h3>
+        <ul>
+          <li>Venture Capital en Argentina, LatAm y fondos de USA invirtiendo en LatAm.</li>
+          <li>Venture builders: GRIDX, CITES, company builders deep tech.</li>
+          <li>Incubadoras y universidades: SparkLab UdeSA, IAE NAVES, aceleradoras.</li>
+          <li>Startups en etapa seed y pre-Serie A.</li>
+          <li>PyMEs en transformación digital.</li>
+          <li>Estudios jurídicos corporativos vinculados a startups.</li>
+          <li>Corporate Venture Capital.</li>
+        </ul>
+        <h3>Eventos de alta fricción</h3>
+        <ul>
+          <li>Búsqueda de cofounder.</li>
+          <li>Ingreso de un CTO o C-level clave.</li>
+          <li>Salida de un founder.</li>
+          <li>Fusión de emergencia entre startups.</li>
+          <li>Reorganización de cap table.</li>
+          <li>Pivote estratégico.</li>
+          <li>Ronda de inversión.</li>
+          <li>Crecimiento acelerado.</li>
+          <li>Conflicto CEO/CTO.</li>
+          <li>Estancamiento del equipo.</li>
+        </ul>
+      </section>
+
+      <section id="biblioteca">
+        <h2>12. Biblioteca comentada</h2>
+        <p>La biblioteca no será una colección pasiva de PDFs o libros. Será un motor de conocimiento para alimentar el programa, los agentes y los MVPs.</p>
+        <h3>Familias teóricas iniciales</h3>
+        <ul>
+          <li>Apego: Bowlby, Ainsworth.</li>
+          <li>Psicología de grupos: Pichon-Rivière, Bion.</li>
+          <li>Teoría de sistemas y cibernética.</li>
+          <li>Complejidad.</li>
+          <li>Homeostasis biológica y organizacional.</li>
+          <li>Economía conductual.</li>
+          <li>Neurociencia del estrés y la incertidumbre.</li>
+          <li>Evolución y cooperación.</li>
+          <li>Antropología.</li>
+          <li>Teoría de organizaciones.</li>
+          <li>Construcción de sentido.</li>
+          <li>Venture Capital, startup failure, founder dynamics.</li>
+        </ul>
+        <h3>Ficha estándar para cada fuente</h3>
+        <pre>Autor / fuente:
+Fenómeno que intenta explicar:
+Evidencia que aporta:
+Conceptos útiles:
+Qué fortalece de nuestro programa:
+Qué NO explica:
+Riesgos de extrapolación:
+Aplicación posible en producto / MVP:</pre>
+      </section>
+
+      <section id="datos">
+        <h2>13. Datos y observables</h2>
+        <p>El programa necesita transformar intuición en datos observables. Las fuentes posibles incluyen:</p>
+        <ul>
+          <li>Pitch decks.</li>
+          <li>Investment memos.</li>
+          <li>LinkedIn de founders.</li>
+          <li>Cap tables.</li>
+          <li>Roadmaps.</li>
+          <li>Formularios de aplicación.</li>
+          <li>Entrevistas.</li>
+          <li>Encuestas de valores.</li>
+          <li>Check-ins periódicos.</li>
+          <li>Slack / Notion / documentación interna, sólo con consentimiento.</li>
+          <li>Casos históricos de ruptura, pivote, fusión o fracaso.</li>
+        </ul>
+        <h3>Inspiración documental ya revisada</h3>
+        <p>El memo de inversión de MOBI muestra una estructura realista de análisis VC: compañía, negocio, tecnología, equipo, tracción, competencia, due diligence, riesgos, opinión de advisory council y recomendación del partner. Este tipo de estructura puede convertirse en matriz de análisis para agentes.</p>
+        <p>El ejercicio de valores inspirado en “Bury My Heart at Conference Room B” aporta metodología: reducción 50 → 10 → 5 → 3, definición personal, validación por preguntas, puntuación e intensidad. No conviene copiarlo linealmente; conviene diseñar una versión propia para founders y sistemas humanos bajo incertidumbre.</p>
+        <p>El material sobre teoría del apego, soledad y aislamiento aporta una clave importante: no sólo habla de miedo, sino de sistemas reguladores. El apego se activa ante dolor, fatiga, amenaza o inaccesibilidad de la figura de seguridad; eso dialoga con regulación y homeostasis.</p>
+      </section>
+
+      <section id="metodo">
+        <h2>14. Método de trabajo</h2>
+        <h3>Cuatro carriles simultáneos</h3>
+        <table>
+          <thead><tr><th>Carril</th><th>Objetivo</th><th>Entregables</th></tr></thead>
+          <tbody>
+            <tr><td>Investigación</td><td>Profundizar el programa y sostener rigor.</td><td>Documento 0, biblioteca comentada, hipótesis, fichas.</td></tr>
+            <tr><td>Producto</td><td>Convertir teoría en herramientas.</td><td>MVPs, formularios, reportes, dashboards.</td></tr>
+            <tr><td>Mercado</td><td>Validar dolores reales.</td><td>Entrevistas, pilotos, alianzas, segmentos.</td></tr>
+            <tr><td>Datos</td><td>Construir base empírica.</td><td>Casos, datasets, taxonomías, señales observables.</td></tr>
+          </tbody>
+        </table>
+        <h3>Research Log</h3>
+        <p>Se propone mantener un registro vivo de cada hipótesis, historia, autor, caso, experimento, entrevista, contradicción y cambio de criterio.</p>
+        <h3>Regla de avance</h3>
+        <div class="principle">
+          No flotamos en la teoría. Cada avance conceptual debe traducirse, cuando sea posible, en una pregunta testeable, una ficha, un observable, una entrevista, una hipótesis de producto o un experimento de mercado.
+        </div>
+      </section>
+
+      <section id="acciones">
+        <h2>15. Próximos pasos</h2>
+        <h3>Acciones inmediatas</h3>
+        <ol>
+          <li>Convertir este HTML en repositorio vivo y subirlo al servidor.</li>
+          <li>Crear el Documento 0 formal: Programa de Investigación v0.2.</li>
+          <li>Armar la primera taxonomía de vulnerabilidades y estrategias adaptativas.</li>
+          <li>Diseñar una ficha de caso para registrar historias propias y casos externos.</li>
+          <li>Crear la primera ficha de biblioteca para Bowlby / apego.</li>
+          <li>Definir tres MVPs posibles y elegir uno para validación rápida.</li>
+          <li>Preparar una lista de 20 entrevistas exploratorias: founders, fondos, incubadoras, abogados, venture builders.</li>
+        </ol>
+        <h3>Primeros MVPs candidatos</h3>
+        <ul>
+          <li><strong>MVP 1:</strong> Founder Values & Vulnerability Alignment — test + reporte + sesión.</li>
+          <li><strong>MVP 2:</strong> VC Human Execution Report — análisis de deck + LinkedIn + equipo + señales de riesgo.</li>
+          <li><strong>MVP 3:</strong> Crisis Founder Navigator — kit de salida/fusión/reorganización.</li>
+          <li><strong>MVP 4:</strong> SparkLab Pilot — taller y diagnóstico con startups universitarias.</li>
+        </ul>
+      </section>
+
+      <section id="anexos" class="appendix">
+        <h2>Anexos</h2>
+        <h3>Anexo A — Frases fundacionales</h3>
+        <ul>
+          <li>“La incertidumbre constituye una amenaza para la continuidad del sistema tal como éste la representa.”</li>
+          <li>“Los seres humanos parecen mostrar una fuerte tendencia a restaurar estados de previsibilidad cuando perciben amenazas relevantes para la continuidad del sistema.”</li>
+          <li>“No queremos medir el miedo. Queremos medir las configuraciones dinámicas que produce la vulnerabilidad bajo incertidumbre.”</li>
+          <li>“La IA es instrumento de observación, no objeto de investigación.”</li>
+          <li>“La conducta es dato, no explicación.”</li>
+        </ul>
+        <h3>Anexo B — Notas sobre posicionamiento</h3>
+        <p>No conviene posicionar el proyecto desde “psicología” ni “terapia de founders”. El lenguaje comercial más potente parece ser:</p>
+        <ul>
+          <li>Execution Risk Mitigation.</li>
+          <li>Founder Alignment.</li>
+          <li>Human Systems Intelligence.</li>
+          <li>Adaptive Team Intelligence.</li>
+          <li>Collective Regulation Intelligence.</li>
+          <li>Human Due Diligence, con cuidado por su posible resistencia.</li>
+        </ul>
+        <h3>Anexo C — Pendientes</h3>
+        <ul>
+          <li>Buscar bibliografía original de Bowlby, Ainsworth, Bion, Pichon-Rivière, Becker, Yalom, teoría de sistemas y organizaciones.</li>
+          <li>Definir si “vulnerabilidad” será el concepto central o si aparecerá un término mejor.</li>
+          <li>Separar claramente observables, inferencias, hipótesis y conclusiones.</li>
+          <li>Diseñar estructura de agentes IA alimentados por biblioteca comentada.</li>
+          <li>Crear versión privada online del libro vivo con edición simple.</li>
+        </ul>
+      </section>
+
+      <footer class="small" style="margin-top:70px; border-top:1px solid var(--line); padding-top:20px;">
+        Documento generado como base de trabajo. Debe ser revisado, ampliado y corregido en futuras versiones.
+      </footer>
+    </article>
+  </main>
+</div>
+</body>
+</html>
