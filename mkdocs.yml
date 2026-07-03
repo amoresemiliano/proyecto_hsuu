@@ -29,3 +29,10 @@ nav:
       - Introducción: 04_biblioteca/introduccion.md
   - "05 - Research Log":
       - Sesiones: 05_research_log/sesiones.md
+  - "06 - Evolución Conceptual":
+      - Introducción: 06_evolucion_conceptual/indice.md
+      - Del miedo a la regulación: 06_evolucion_conceptual/001_del_miedo_a_la_regulacion.md
+      - Del individuo al sistema: 06_evolucion_conceptual/002_del_individuo_al_sistema.md
+  - "07 - Bitácora":
+       - Índice: 07_bitacora/indice.md
+      - 2026-07-03: 07_bitacora/2026_07_03.md
