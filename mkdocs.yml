@@ -1,0 +1,30 @@
+site_name: HSUU - Human Systems Under Uncertainty
+site_description: Programa de investigación sobre sistemas humanos bajo incertidumbre
+site_author: Emiliano Di Rosa
+
+theme:
+  name: material
+  language: es
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+
+nav:
+  - Inicio: index.md
+  - "00 - Observatorio":
+      - Origen: 00_observatorio/origen.md
+  - "01 - Programa de Investigación":
+      - Fenómeno: 01_programa/fenomeno.md
+      - Principios: 01_programa/principios.md
+      - Hipótesis: 01_programa/hipotesis.md
+  - "02 - Framework ACRF":
+      - Introducción: 02_framework/acrf.md
+  - "03 - Casos":
+      - Índice de Casos: 03_casos/indice.md
+  - "04 - Biblioteca Comentada":
+      - Introducción: 04_biblioteca/introduccion.md
+  - "05 - Research Log":
+      - Sesiones: 05_research_log/sesiones.md
