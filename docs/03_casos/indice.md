@@ -1,1 +1,2 @@
 - [Caso 001 — Bicicleta destruida en Panamá](caso_001_bicicleta_panama.md)
+- [Caso 002 — Cuesta del Obispo](caso_002_cuesta_del_obispo.md)
