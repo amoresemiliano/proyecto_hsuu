@@ -22,6 +22,7 @@ nav:
       - Hipótesis: 01_programa/hipotesis.md
   - "02 - Framework ACRF":
       - Introducción: 02_framework/acrf.md
+      - Dimensiones: 02_framework/dimensiones_acrf.md
   - "03 - Casos":
       - Índice de Casos: 03_casos/indice.md
   - "04 - Biblioteca Comentada":
