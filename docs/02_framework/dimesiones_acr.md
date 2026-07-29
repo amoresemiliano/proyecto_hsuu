@@ -1,4 +1,4 @@
-# Dimensiones iniciales ACRF
+# Dimensiones iniciales ACR
 
 El Adaptive Collective Regulation Framework intenta transformar fenómenos colectivos observables en dimensiones analizables.
 
