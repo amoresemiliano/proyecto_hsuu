@@ -25,8 +25,8 @@ nav:
       - Hipótesis: 01_programa/hipotesis.md
 
   - "02 — Framework ACR":
-      - Introducción: 02_framework/acrf.md
-      - Dimensiones: 02_framework/dimensiones_acrf.md
+      - Introducción: 02_framework/acr.md
+      - Dimensiones: 02_framework/dimensiones_acr.md
 
   - "03 — Casos":
       - Índice de casos: 03_casos/indice.md
