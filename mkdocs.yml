@@ -25,14 +25,14 @@ nav:
       - Hipótesis: 01_programa/hipotesis.md
 
   - "02 — Framework ACR":
-    - Introducción: 02_framework/acr.md
-    - Dimensiones: 02_framework/dimensiones_acr.md
+      - Introducción: 02_framework/acr.md
+      - Dimensiones: 02_framework/dimensiones_acr.md
 
-- "03 — Aplicaciones":
-    - Introducción: 03_aplicaciones/index.md
+  - "03 — Aplicaciones":
+      - Introducción: 03_aplicaciones/index.md
 
-- "03 — Casos":
-    - Índice de casos: 03_casos/indice.md
+  - "03 — Casos":
+      - Índice de casos: 03_casos/indice.md
 
   - "04 — Biblioteca comentada":
       - Introducción: 04_biblioteca/introduccion.md
