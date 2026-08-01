@@ -31,22 +31,27 @@ nav:
   - "03 — Aplicaciones":
       - Introducción: 03_aplicaciones/index.md
 
-  - "03 — Casos":
-      - Índice de casos: 03_casos/indice.md
+  - "04 — Casos":
+      - Índice de casos: 04_casos/indice.md
+      - "001 — Cuesta del Obispo": 04_casos/001_cuesta_del_obispo.md
+      - "002 — Departamento de Estado": 04_casos/002_departamento_estado.md
+      - "003 — Centroamérica y la bicicleta": 04_casos/003_centroamerica_bicicleta.md
+      - "004 — TCL en China": 04_casos/004_china_tcl.md
+      - "005 — Afganistán": 04_casos/005_afganistan.md
 
-  - "04 — Biblioteca comentada":
-      - Introducción: 04_biblioteca/introduccion.md
+  - "05 — Biblioteca comentada":
+      - Introducción: 05_biblioteca/introduccion.md
 
-  - "05 — Research Log":
-      - Sesiones: 05_research_log/sesiones.md
+  - "06 — Research Log":
+      - Sesiones: 06_research_log/sesiones.md
 
-  - "06 — Evolución conceptual":
-      - Introducción: 06_evolucion_conceptual/indice.md
-      - Del miedo a la regulación: 06_evolucion_conceptual/001_del_miedo_a_la_regulacion.md
-      - Del individuo al sistema: 06_evolucion_conceptual/002_del_individuo_al_sistema.md
-      - De la personalidad a la emergencia: 06_evolucion_conceptual/003_de_la_personalidad_a_la_emergencia.md
-      - De la IA al instrumento: 06_evolucion_conceptual/004_de_la_ia_al_instrumento.md
+  - "07 — Evolución conceptual":
+      - Introducción: 07_evolucion_conceptual/indice.md
+      - Del miedo a la regulación: 07_evolucion_conceptual/001_del_miedo_a_la_regulacion.md
+      - Del individuo al sistema: 07_evolucion_conceptual/002_del_individuo_al_sistema.md
+      - De la personalidad a la emergencia: 07_evolucion_conceptual/003_de_la_personalidad_a_la_emergencia.md
+      - De la IA al instrumento: 07_evolucion_conceptual/004_de_la_ia_al_instrumento.md
 
-  - "07 — Bitácora":
-      - Índice: 07_bitacora/indice.md
-      - 2026-07-03: 07_bitacora/2026_07_03.md
+  - "08 — Bitácora":
+      - Índice: 08_bitacora/indice.md
+      - "2026-07-03": 08_bitacora/2026_07_03.md

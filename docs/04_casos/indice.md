@@ -1,0 +1,5 @@
+- [Caso 001 — Cuesta del Obispo](001_cuesta_del_obispo.md)
+- [Caso 002 — Departamento de Estado](002_departamento_estado.md)
+- [Caso 003 — Centroamérica y la bicicleta](003_centroamerica_bicicleta.md)
+- [Caso 004 — TCL en China](004_china_tcl.md)
+- [Caso 005 — Afganistán](005_afganistan.md)
